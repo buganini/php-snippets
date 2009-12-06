@@ -16,10 +16,19 @@ function mksql($pat){
 				case 'd':
 					$sql.=intval(array_shift($args));
 					break;
+				#float
+				case 'f':
+					$sql.=floatval(array_shift($args));
+					break;
 				#boolean
 				case 'b':
 					$sql.=array_shift($args)?1:0;
 					break;
+				#table
+				case 't':
+					$sql.='`'.sqlslashes(array_shift($args)).'`';
+					break;
+				#% itself
 				case '%':
 					$sql.='%';
 					break;
